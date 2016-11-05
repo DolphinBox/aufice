@@ -69,11 +69,11 @@ namespace Aufice
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // TODO: use this.Content to load your game content here
-            texture = this.Content.Load<Texture2D>("logo");
+            texture = this.Content.Load<Texture2D>("alynswim");
 
             Vector2 playerPosition = new Vector2(GraphicsDevice.Viewport.TitleSafeArea.X, GraphicsDevice.Viewport.TitleSafeArea.Y + GraphicsDevice.Viewport.TitleSafeArea.Height / 2);
 
-            player.Initialize(Content.Load<Texture2D>("logo"), playerPosition);
+            player.Initialize(Content.Load<Texture2D>("alynswim"), playerPosition);
 
         }
 
@@ -92,7 +92,11 @@ namespace Aufice
         /// </summary>
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime){
-            // TODO: Add your update logic here
+            previousGamePadState = currentGamePadState;
+            previousKeyboardState = currentKeyboardState;
+
+            currentKeyboardState = Keyboard.GetState();
+            currentGamePadState = GamePad.GetState(PlayerIndex.One);
 
             UpdatePlayer(gameTime);
 
@@ -146,9 +150,9 @@ namespace Aufice
                 player.Position.Y += playerMoveSpeed;
             }
 
-            player.Position.X = MathHelper.Clamp(player.Position.X, 0, (GraphicsDevice.Viewport.Width – player.Width));
+            player.Position.X = MathHelper.Clamp(player.Position.X, 0, GraphicsDevice.Viewport.Width - player.Width);
 
-            player.Position.Y = MathHelper.Clamp(player.Position.Y, 0, GraphicsDevice.Viewport.Height – player.Height);
+            player.Position.Y = MathHelper.Clamp(player.Position.Y, 0, GraphicsDevice.Viewport.Height - player.Height);
         }
 
     }

@@ -27,3 +27,4 @@ C:\Users\devin_000\Source\Repos\aufice\Aufice\bin\DesktopGL\x86\Debug\MonoGame.F
 C:\Users\devin_000\Source\Repos\aufice\Aufice\bin\DesktopGL\x86\Debug\NVorbis.dll
 C:\Users\devin_000\Source\Repos\aufice\Aufice\bin\DesktopGL\x86\Debug\OpenTK.dll
 C:\Users\devin_000\Source\Repos\aufice\Aufice\obj\x86\Debug\Aufice.csprojResolveAssemblyReference.cache
+C:\Users\devin_000\Source\Repos\aufice\Aufice\bin\DesktopGL\x86\Debug\Content\alynswim.xnb
