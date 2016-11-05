@@ -23,13 +23,22 @@ namespace Aufice
         Texture2D texture;
         Vector2 position;
 
+        /* 
+        Input Processes
+        */
+
         KeyboardState currentKeyboardState;
         KeyboardState previousKeyboardState;
+        GamePadState currentGamePadState;
+        GamePadState previousGamePadState;
+        MouseState currentMouseState;
+        MouseState previousMouseState;
+
+        float playerMoveSpeed;
 
         Player player;
 
-        public Aufice()
-        {
+        public Aufice() {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
         }
@@ -40,11 +49,11 @@ namespace Aufice
         /// related content.  Calling base.Initialize will enumerate through any components
         /// and initialize them as well.
         /// </summary>
-        protected override void Initialize()
-        {
-            // TODO: Add your initialization logic here
-
+        protected override void Initialize(){
             player = new Player();
+            playerMoveSpeed = 8.0f;
+
+            TouchPanel.EnabledGestures = GestureType.FreeDrag;
 
             //Draw a rectangle
 
@@ -55,8 +64,7 @@ namespace Aufice
         /// LoadContent will be called once per game and is the place to load
         /// all of your content.
         /// </summary>
-        protected override void LoadContent()
-        {
+        protected override void LoadContent(){
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
@@ -73,8 +81,7 @@ namespace Aufice
         /// UnloadContent will be called once per game and is the place to unload
         /// game-specific content.
         /// </summary>
-        protected override void UnloadContent()
-        {
+        protected override void UnloadContent(){
             // TODO: Unload any non ContentManager content here
             Content.Unload();
         }
@@ -84,18 +91,13 @@ namespace Aufice
         /// checking for collisions, gathering input, and playing audio.
         /// </summary>
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
-        protected override void Update(GameTime gameTime)
-        {
-
-
+        protected override void Update(GameTime gameTime){
             // TODO: Add your update logic here
 
             //Update rectangle position
-            if (IsActive)
-            {
+            if (IsActive){
                 if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                     Exit();
-
                 base.Update(gameTime);
             }
         }
@@ -104,8 +106,7 @@ namespace Aufice
         /// This is called when the game should draw itself.
         /// </summary>
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
-        protected override void Draw(GameTime gameTime)
-        {
+        protected override void Draw(GameTime gameTime){
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             // TODO: Add your drawing code here
@@ -121,5 +122,28 @@ namespace Aufice
 
             base.Draw(gameTime);
         }
+
+        
+        //Updates the player constantly
+        private void UpdatePlayer(GameTime gameTime){
+            // Get Thumbstick Controls
+            player.Position.X += currentGamePadState.ThumbSticks.Left.X * playerMoveSpeed;
+            player.Position.Y -= currentGamePadState.ThumbSticks.Left.Y * playerMoveSpeed;
+
+            // Use the Keyboard / Dpad
+            if (currentKeyboardState.IsKeyDown(Keys.Left) || currentGamePadState.DPad.Left == ButtonState.Pressed){
+                player.Position.X -= playerMoveSpeed;
+            }
+            if (currentKeyboardState.IsKeyDown(Keys.Right) || currentGamePadState.DPad.Right == ButtonState.Pressed){
+                player.Position.X += playerMoveSpeed;
+            }
+            if (currentKeyboardState.IsKeyDown(Keys.Up) || currentGamePadState.DPad.Up == ButtonState.Pressed){
+                player.Position.Y -= playerMoveSpeed;
+            }
+            if (currentKeyboardState.IsKeyDown(Keys.Down) || currentGamePadState.DPad.Down == ButtonState.Pressed){
+                player.Position.Y += playerMoveSpeed;
+            }
+        }
+
     }
 }
