@@ -94,6 +94,8 @@ namespace Aufice
         protected override void Update(GameTime gameTime){
             // TODO: Add your update logic here
 
+            UpdatePlayer(gameTime);
+
             //Update rectangle position
             if (IsActive){
                 if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
@@ -143,6 +145,10 @@ namespace Aufice
             if (currentKeyboardState.IsKeyDown(Keys.Down) || currentGamePadState.DPad.Down == ButtonState.Pressed){
                 player.Position.Y += playerMoveSpeed;
             }
+
+            player.Position.X = MathHelper.Clamp(player.Position.X, 0, (GraphicsDevice.Viewport.Width – player.Width));
+
+            player.Position.Y = MathHelper.Clamp(player.Position.Y, 0, GraphicsDevice.Viewport.Height – player.Height);
         }
 
     }
