@@ -17,3 +17,13 @@ C:\aufice\aufice\Aufice\bin\DesktopGL\x86\Debug\NVorbis.dll
 C:\aufice\aufice\Aufice\bin\DesktopGL\x86\Debug\OpenTK.dll
 C:\aufice\aufice\Aufice\obj\x86\Debug\Aufice.csprojResolveAssemblyReference.cache
 C:\aufice\aufice\Aufice\bin\DesktopGL\x86\Debug\Content\logo.xnb
+C:\Users\devin_000\Source\Repos\aufice\Aufice\obj\x86\Debug\Aufice.exe
+C:\Users\devin_000\Source\Repos\aufice\Aufice\obj\x86\Debug\Aufice.pdb
+C:\Users\devin_000\Source\Repos\aufice\Aufice\bin\DesktopGL\x86\Debug\Content\logo.xnb
+C:\Users\devin_000\Source\Repos\aufice\Aufice\bin\DesktopGL\x86\Debug\OpenTK.dll.config
+C:\Users\devin_000\Source\Repos\aufice\Aufice\bin\DesktopGL\x86\Debug\Aufice.exe
+C:\Users\devin_000\Source\Repos\aufice\Aufice\bin\DesktopGL\x86\Debug\Aufice.pdb
+C:\Users\devin_000\Source\Repos\aufice\Aufice\bin\DesktopGL\x86\Debug\MonoGame.Framework.dll
+C:\Users\devin_000\Source\Repos\aufice\Aufice\bin\DesktopGL\x86\Debug\NVorbis.dll
+C:\Users\devin_000\Source\Repos\aufice\Aufice\bin\DesktopGL\x86\Debug\OpenTK.dll
+C:\Users\devin_000\Source\Repos\aufice\Aufice\obj\x86\Debug\Aufice.csprojResolveAssemblyReference.cache
