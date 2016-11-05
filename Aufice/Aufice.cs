@@ -1,6 +1,10 @@
-﻿using Microsoft.Xna.Framework;
+﻿using Aufice.Objects.Characters;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Input.Touch;
+
 
 /*
  * (c) 2016 EstiNet
@@ -12,14 +16,19 @@ namespace Aufice
     /// <summary>
     /// Aufice. An experimental game.
     /// </summary>
-    public class Game1 : Game
+    public class Aufice : Game
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         Texture2D texture;
         Vector2 position;
 
-        public Game1()
+        KeyboardState currentKeyboardState;
+        KeyboardState previousKeyboardState;
+
+        Player player;
+
+        public Aufice()
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
@@ -34,6 +43,8 @@ namespace Aufice
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
+
+            player = new Player();
 
             //Draw a rectangle
 
@@ -51,6 +62,11 @@ namespace Aufice
 
             // TODO: use this.Content to load your game content here
             texture = this.Content.Load<Texture2D>("logo");
+
+            Vector2 playerPosition = new Vector2(GraphicsDevice.Viewport.TitleSafeArea.X, GraphicsDevice.Viewport.TitleSafeArea.Y + GraphicsDevice.Viewport.TitleSafeArea.Height / 2);
+
+            player.Initialize(Content.Load<Texture2D>("logo"), playerPosition);
+
         }
 
         /// <summary>
@@ -97,6 +113,10 @@ namespace Aufice
             //Draw the rectangle
             spriteBatch.Begin();
             spriteBatch.Draw(texture, position);
+            spriteBatch.End();
+
+            spriteBatch.Begin();
+            player.Draw(spriteBatch);
             spriteBatch.End();
 
             base.Draw(gameTime);

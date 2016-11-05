@@ -38,7 +38,7 @@
     <ApplicationIcon>Icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Game1.cs" />
+    <Compile Include="Aufice.cs" />
     <Compile Include="Objects\Characters\Character.cs" />
     <Compile Include="Objects\Characters\Player.cs" />
     <Compile Include="Program.cs" />
