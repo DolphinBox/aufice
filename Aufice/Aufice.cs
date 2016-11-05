@@ -8,6 +8,8 @@ using Microsoft.Xna.Framework.Input.Touch;
 
 /*
  * (c) 2016 EstiNet
+ * Aufice is a 2.5D Puzzle Platformer, centered on a world that expands as you unlock the world around.
+ * Built on XNA/MonoGame.
  */
 
 
