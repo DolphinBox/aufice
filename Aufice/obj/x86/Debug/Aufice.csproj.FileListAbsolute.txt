@@ -7,3 +7,13 @@ C:\Users\sesha\Desktop\FluidChat\Aufice\Aufice\bin\DesktopGL\x86\Debug\OpenTK.dl
 C:\Users\sesha\Desktop\FluidChat\Aufice\Aufice\obj\x86\Debug\Aufice.csprojResolveAssemblyReference.cache
 C:\Users\sesha\Desktop\FluidChat\Aufice\Aufice\obj\x86\Debug\Aufice.exe
 C:\Users\sesha\Desktop\FluidChat\Aufice\Aufice\obj\x86\Debug\Aufice.pdb
+C:\aufice\aufice\Aufice\obj\x86\Debug\Aufice.exe
+C:\aufice\aufice\Aufice\obj\x86\Debug\Aufice.pdb
+C:\aufice\aufice\Aufice\bin\DesktopGL\x86\Debug\OpenTK.dll.config
+C:\aufice\aufice\Aufice\bin\DesktopGL\x86\Debug\Aufice.exe
+C:\aufice\aufice\Aufice\bin\DesktopGL\x86\Debug\Aufice.pdb
+C:\aufice\aufice\Aufice\bin\DesktopGL\x86\Debug\MonoGame.Framework.dll
+C:\aufice\aufice\Aufice\bin\DesktopGL\x86\Debug\NVorbis.dll
+C:\aufice\aufice\Aufice\bin\DesktopGL\x86\Debug\OpenTK.dll
+C:\aufice\aufice\Aufice\obj\x86\Debug\Aufice.csprojResolveAssemblyReference.cache
+C:\aufice\aufice\Aufice\bin\DesktopGL\x86\Debug\Content\logo.xnb

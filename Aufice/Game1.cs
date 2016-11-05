@@ -2,6 +2,11 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
+/*
+ * (c) 2016 EstiNet
+ */
+
+
 namespace Aufice
 {
     /// <summary>
@@ -11,6 +16,8 @@ namespace Aufice
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
+        Texture2D texture;
+        Vector2 position;
 
         public Game1()
         {
@@ -27,7 +34,8 @@ namespace Aufice
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-            
+
+            //Draw a rectangle
 
             base.Initialize();
         }
@@ -42,6 +50,7 @@ namespace Aufice
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // TODO: use this.Content to load your game content here
+            texture = this.Content.Load<Texture2D>("logo");
         }
 
         /// <summary>
@@ -51,6 +60,7 @@ namespace Aufice
         protected override void UnloadContent()
         {
             // TODO: Unload any non ContentManager content here
+            Content.Unload();
         }
 
         /// <summary>
@@ -60,12 +70,18 @@ namespace Aufice
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
-                Exit();
+
 
             // TODO: Add your update logic here
 
-            base.Update(gameTime);
+            //Update rectangle position
+            if (IsActive)
+            {
+                if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
+                    Exit();
+
+                base.Update(gameTime);
+            }
         }
 
         /// <summary>
@@ -77,6 +93,11 @@ namespace Aufice
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             // TODO: Add your drawing code here
+
+            //Draw the rectangle
+            spriteBatch.Begin();
+            spriteBatch.Draw(texture, position);
+            spriteBatch.End();
 
             base.Draw(gameTime);
         }
