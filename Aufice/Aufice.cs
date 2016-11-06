@@ -64,6 +64,9 @@ namespace Aufice
             TouchPanel.EnabledGestures = GestureType.FreeDrag;
 
             //Draw a rectangle
+            
+            //Remember to set this to false when in-game!
+            this.IsMouseVisible = true;
 
             base.Initialize();
         }
@@ -77,7 +80,7 @@ namespace Aufice
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // TODO: use this.Content to load your game content here
-            texture = this.Content.Load<Texture2D>("Seshpenguin");
+            texture = this.Content.Load<Texture2D>("logo");
 
             Vector2 playerPosition = new Vector2(GraphicsDevice.Viewport.TitleSafeArea.X, GraphicsDevice.Viewport.TitleSafeArea.Y + GraphicsDevice.Viewport.TitleSafeArea.Height / 2);
 
@@ -137,7 +140,7 @@ namespace Aufice
 
             //Draw the rectangle
             spriteBatch.Begin();
-            spriteBatch.Draw(texture, position);
+            spriteBatch.Draw(texture, destinationRectangle: new Rectangle(0, 0, 60, 60));
             spriteBatch.End();
 
             spriteBatch.Begin();
