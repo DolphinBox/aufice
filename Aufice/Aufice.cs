@@ -1,5 +1,6 @@
 ﻿using Aufice.Objects.Characters;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Input;
@@ -25,6 +26,9 @@ namespace Aufice
         Texture2D texture;
         Vector2 position;
 
+        // Audio objects
+        SoundEffect soundEffect;
+
         /* 
         Input Processes
         */
@@ -35,6 +39,8 @@ namespace Aufice
         GamePadState previousGamePadState;
         MouseState currentMouseState;
         MouseState previousMouseState;
+
+        SoundEffectInstance soundInstance;
 
         float playerMoveSpeed;
 
@@ -71,12 +77,22 @@ namespace Aufice
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // TODO: use this.Content to load your game content here
-            texture = this.Content.Load<Texture2D>("alynswim");
+            texture = this.Content.Load<Texture2D>("Seshpenguin");
 
             Vector2 playerPosition = new Vector2(GraphicsDevice.Viewport.TitleSafeArea.X, GraphicsDevice.Viewport.TitleSafeArea.Y + GraphicsDevice.Viewport.TitleSafeArea.Height / 2);
 
-            player.Initialize(Content.Load<Texture2D>("alynswim"), playerPosition);
+            player.Initialize(Content.Load<Texture2D>("Seshpenguin"), playerPosition);
 
+            //Initalize Sounds
+            //soundfile = TitleContainer.OpenStream(@"Content\tx0_fire1.wav");
+            soundEffect = Content.Load<SoundEffect>("intro");
+            soundInstance = soundEffect.CreateInstance();
+
+            //Set Volume
+            soundInstance.Volume = 0.5F;
+
+            //Play sounds
+            soundInstance.Play();
         }
 
         /// <summary>
@@ -139,16 +155,16 @@ namespace Aufice
             player.Position.Y -= currentGamePadState.ThumbSticks.Left.Y * playerMoveSpeed;
 
             // Use the Keyboard / Dpad
-            if (currentKeyboardState.IsKeyDown(Keys.Left) || currentGamePadState.DPad.Left == ButtonState.Pressed){
+            if (currentKeyboardState.IsKeyDown(Keys.A) || currentGamePadState.DPad.Left == ButtonState.Pressed){
                 player.Position.X -= playerMoveSpeed;
             }
-            if (currentKeyboardState.IsKeyDown(Keys.Right) || currentGamePadState.DPad.Right == ButtonState.Pressed){
+            if (currentKeyboardState.IsKeyDown(Keys.D) || currentGamePadState.DPad.Right == ButtonState.Pressed){
                 player.Position.X += playerMoveSpeed;
             }
-            if (currentKeyboardState.IsKeyDown(Keys.Up) || currentGamePadState.DPad.Up == ButtonState.Pressed){
+            if (currentKeyboardState.IsKeyDown(Keys.W) || currentGamePadState.DPad.Up == ButtonState.Pressed){
                 player.Position.Y -= playerMoveSpeed;
             }
-            if (currentKeyboardState.IsKeyDown(Keys.Down) || currentGamePadState.DPad.Down == ButtonState.Pressed){
+            if (currentKeyboardState.IsKeyDown(Keys.S) || currentGamePadState.DPad.Down == ButtonState.Pressed){
                 player.Position.Y += playerMoveSpeed;
             }
 

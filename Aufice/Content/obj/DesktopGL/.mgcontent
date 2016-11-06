@@ -5,5 +5,7 @@
   <Config />
   <SourceFiles>
     <File>C:/aufice/aufice/Aufice/Content/logo.jpg</File>
+    <File>C:/aufice/aufice/Aufice/Content/Seshpenguin.png</File>
+    <File>C:/aufice/aufice/Aufice/Content/intro.wav</File>
   </SourceFiles>
 </SourceFileCollection>
