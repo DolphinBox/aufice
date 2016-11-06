@@ -28,3 +28,5 @@ C:\Users\devin_000\Source\Repos\aufice\Aufice\bin\DesktopGL\x86\Debug\NVorbis.dl
 C:\Users\devin_000\Source\Repos\aufice\Aufice\bin\DesktopGL\x86\Debug\OpenTK.dll
 C:\Users\devin_000\Source\Repos\aufice\Aufice\obj\x86\Debug\Aufice.csprojResolveAssemblyReference.cache
 C:\Users\devin_000\Source\Repos\aufice\Aufice\bin\DesktopGL\x86\Debug\Content\alynswim.xnb
+C:\aufice\aufice\Aufice\bin\DesktopGL\x86\Debug\Content\Seshpenguin.xnb
+C:\aufice\aufice\Aufice\bin\DesktopGL\x86\Debug\Content\intro.xnb
