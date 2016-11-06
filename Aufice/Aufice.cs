@@ -5,6 +5,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Input.Touch;
+//using System;
 
 
 /*
@@ -25,6 +26,7 @@ namespace Aufice
         SpriteBatch spriteBatch;
         Texture2D texture;
         Vector2 position;
+        Texture2D play_button;
 
         // Audio objects
         SoundEffect soundEffect;
@@ -45,6 +47,10 @@ namespace Aufice
         float playerMoveSpeed;
 
         Player player;
+
+        //Font Stuff
+        SpriteFont font;
+
 
         public Aufice() {
             graphics = new GraphicsDeviceManager(this);
@@ -68,6 +74,10 @@ namespace Aufice
             //Remember to set this to false when in-game!
             this.IsMouseVisible = true;
 
+            // #ResizeDatWindow!
+            this.Window.AllowUserResizing = true;
+            //this.Window.ClientSizeChanged += new EventHandler<EventArgs>(Window_ClientSizeChanged);
+
             base.Initialize();
         }
 
@@ -82,9 +92,14 @@ namespace Aufice
             // TODO: use this.Content to load your game content here
             texture = this.Content.Load<Texture2D>("logo");
 
+            play_button = this.Content.Load<Texture2D>("appbar.control.play");
+
             Vector2 playerPosition = new Vector2(GraphicsDevice.Viewport.TitleSafeArea.X, GraphicsDevice.Viewport.TitleSafeArea.Y + GraphicsDevice.Viewport.TitleSafeArea.Height / 2);
 
             player.Initialize(Content.Load<Texture2D>("Seshpenguin"), playerPosition);
+
+
+            //if(texture.)
 
             //Initalize Sounds
             //soundfile = TitleContainer.OpenStream(@"Content\tx0_fire1.wav");
@@ -96,6 +111,9 @@ namespace Aufice
 
             //Play sounds
             soundInstance.Play();
+
+            // Put the name of the font
+            font = this. Content.Load<SpriteFont>("Font1");
         }
 
         /// <summary>
@@ -127,6 +145,8 @@ namespace Aufice
                     Exit();
                 base.Update(gameTime);
             }
+
+
         }
 
         /// <summary>
@@ -141,6 +161,9 @@ namespace Aufice
             //Draw the rectangle
             spriteBatch.Begin();
             spriteBatch.Draw(texture, destinationRectangle: new Rectangle(0, 0, 60, 60));
+            spriteBatch.Draw(play_button, destinationRectangle: new Rectangle(300, 300, 150, 150));
+            spriteBatch.DrawString(font, "FPS:" + (1000 / gameTime.ElapsedGameTime.Milliseconds), new Vector2(10.0f, 20.0f), Color.White);
+
             spriteBatch.End();
 
             spriteBatch.Begin();
