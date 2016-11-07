@@ -26,7 +26,10 @@ namespace Aufice
         SpriteBatch spriteBatch;
         Texture2D texture;
         Vector2 position;
+        Vector2 position2;
         Texture2D play_button;
+        Texture2D background;
+        Texture2D background2;
 
         // Audio objects
         SoundEffect soundEffect;
@@ -50,6 +53,7 @@ namespace Aufice
 
         //Font Stuff
         SpriteFont font;
+        SpriteFont fontBig;
 
 
         public Aufice() {
@@ -80,7 +84,7 @@ namespace Aufice
 
             base.Initialize();
         }
-
+        //private ScrollingBackground myBackground;
         /// <summary>
         /// LoadContent will be called once per game and is the place to load
         /// all of your content.
@@ -93,6 +97,8 @@ namespace Aufice
             texture = this.Content.Load<Texture2D>("logo");
 
             play_button = this.Content.Load<Texture2D>("appbar.control.play");
+            background = this.Content.Load<Texture2D>("clouds");
+            background2 = this.Content.Load<Texture2D>("appbar.cloud");
 
             Vector2 playerPosition = new Vector2(GraphicsDevice.Viewport.TitleSafeArea.X, GraphicsDevice.Viewport.TitleSafeArea.Y + GraphicsDevice.Viewport.TitleSafeArea.Height / 2);
 
@@ -100,6 +106,8 @@ namespace Aufice
 
 
             //if(texture.)
+
+            //myBackground = new ScrollingBackground();
 
             //Initalize Sounds
             //soundfile = TitleContainer.OpenStream(@"Content\tx0_fire1.wav");
@@ -114,6 +122,7 @@ namespace Aufice
 
             // Put the name of the font
             font = this. Content.Load<SpriteFont>("Font1");
+            fontBig = this.Content.Load<SpriteFont>("FontBig");
         }
 
         /// <summary>
@@ -140,11 +149,19 @@ namespace Aufice
             UpdatePlayer(gameTime);
 
             //Update rectangle position
-            if (IsActive){
-                if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
-                    Exit();
-                base.Update(gameTime);
-            }
+            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
+                Exit();
+
+            position.X += 1;
+            if (position.X > this.GraphicsDevice.Viewport.Width)
+                position.X = 0;
+
+            position2.X += 1.5f;
+            if (position2.X > this.GraphicsDevice.Viewport.Width)
+                position2.X = 0;
+
+            base.Update(gameTime);
+
 
 
         }
@@ -154,15 +171,22 @@ namespace Aufice
         /// </summary>
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime){
-            GraphicsDevice.Clear(Color.CornflowerBlue);
+            Color bgcolor = new Color(173, 230, 255);
+            GraphicsDevice.Clear(bgcolor);
 
             // TODO: Add your drawing code here
 
-            //Draw the rectangle
+            //Things drawn on screen are layered from top to bottom from where they are drawn here.
             spriteBatch.Begin();
+
+            spriteBatch.Draw(background, position); //Layering some backgrounds
+            spriteBatch.Draw(background2, position2);
+
             spriteBatch.Draw(texture, destinationRectangle: new Rectangle(0, 0, 60, 60));
-            spriteBatch.Draw(play_button, destinationRectangle: new Rectangle(300, 300, 150, 150));
-            spriteBatch.DrawString(font, "FPS:" + (1000 / gameTime.ElapsedGameTime.Milliseconds), new Vector2(10.0f, 20.0f), Color.White);
+            spriteBatch.Draw(play_button, destinationRectangle: new Rectangle(300, 200, 150, 150));
+            spriteBatch.DrawString(font, "FPS:" + (1000 / gameTime.ElapsedGameTime.Milliseconds), new Vector2(725.0f, 20.0f), Color.White);
+            spriteBatch.DrawString(font, "Play Aufice!", new Vector2(350.0f, 150.0f), Color.Green);
+            spriteBatch.DrawString(fontBig, "Aufice", new Vector2(350.0f, 50.0f), Color.Green);
 
             spriteBatch.End();
 
