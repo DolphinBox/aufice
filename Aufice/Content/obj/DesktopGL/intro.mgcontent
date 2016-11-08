@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <SourceFile>C:/aufice/aufice/Aufice/Content/intro.wav</SourceFile>
-  <SourceTime>2016-11-05T21:06:01.2861565-04:00</SourceTime>
+  <SourceTime>2016-11-08T08:04:28.4973395-05:00</SourceTime>
   <DestFile>C:/aufice/aufice/Aufice/Content/bin/DesktopGL/intro.xnb</DestFile>
-  <DestTime>2016-11-07T20:06:34.7183189-05:00</DestTime>
+  <DestTime>2016-11-08T08:05:13.1750909-05:00</DestTime>
   <Importer>WavImporter</Importer>
   <ImporterTime>2016-03-30T02:36:08-04:00</ImporterTime>
   <Processor>SoundEffectProcessor</Processor>
