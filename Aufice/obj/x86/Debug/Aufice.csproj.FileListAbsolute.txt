@@ -30,3 +30,10 @@ C:\Users\devin_000\Source\Repos\aufice\Aufice\obj\x86\Debug\Aufice.csprojResolve
 C:\Users\devin_000\Source\Repos\aufice\Aufice\bin\DesktopGL\x86\Debug\Content\alynswim.xnb
 C:\aufice\aufice\Aufice\bin\DesktopGL\x86\Debug\Content\Seshpenguin.xnb
 C:\aufice\aufice\Aufice\bin\DesktopGL\x86\Debug\Content\intro.xnb
+C:\aufice\aufice\Aufice\bin\DesktopGL\x86\Debug\Content\appbar.control.play.xnb
+C:\aufice\aufice\Aufice\bin\DesktopGL\x86\Debug\Content\Font1.xnb
+C:\aufice\aufice\Aufice\bin\DesktopGL\x86\Debug\Content\clouds.xnb
+C:\aufice\aufice\Aufice\bin\DesktopGL\x86\Debug\Content\appbar.cloud.xnb
+C:\aufice\aufice\Aufice\bin\DesktopGL\x86\Debug\Content\FontBig.xnb
+C:\aufice\aufice\Aufice\bin\DesktopGL\x86\Debug\Content\appbar.cursor.default.xnb
+C:\aufice\aufice\Aufice\bin\DesktopGL\x86\Debug\Content\pixel_background.xnb

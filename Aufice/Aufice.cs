@@ -47,6 +47,9 @@ namespace Aufice
 
         SoundEffectInstance soundInstance;
 
+        Viewport viewport;
+
+
         float playerMoveSpeed;
 
         Player player;
@@ -81,6 +84,7 @@ namespace Aufice
             // #ResizeDatWindow!
             this.Window.AllowUserResizing = true;
             //this.Window.ClientSizeChanged += new EventHandler<EventArgs>(Window_ClientSizeChanged);
+            viewport = graphics.GraphicsDevice.Viewport;
 
             base.Initialize();
         }
@@ -97,12 +101,12 @@ namespace Aufice
             texture = this.Content.Load<Texture2D>("logo");
 
             play_button = this.Content.Load<Texture2D>("appbar.control.play");
-            background = this.Content.Load<Texture2D>("clouds");
+            background = this.Content.Load<Texture2D>("pixel_background");
             background2 = this.Content.Load<Texture2D>("appbar.cloud");
 
             Vector2 playerPosition = new Vector2(GraphicsDevice.Viewport.TitleSafeArea.X, GraphicsDevice.Viewport.TitleSafeArea.Y + GraphicsDevice.Viewport.TitleSafeArea.Height / 2);
 
-            player.Initialize(Content.Load<Texture2D>("Seshpenguin"), playerPosition);
+            player.Initialize(Content.Load<Texture2D>("appbar.cursor.default"), playerPosition);
 
 
             //if(texture.)
@@ -156,7 +160,7 @@ namespace Aufice
             if (position.X > this.GraphicsDevice.Viewport.Width)
                 position.X = 0;
 
-            position2.X += 1.5f;
+            position2.X += 1f;
             if (position2.X > this.GraphicsDevice.Viewport.Width)
                 position2.X = 0;
 
@@ -179,14 +183,14 @@ namespace Aufice
             //Things drawn on screen are layered from top to bottom from where they are drawn here.
             spriteBatch.Begin();
 
-            spriteBatch.Draw(background, position); //Layering some backgrounds
+            spriteBatch.Draw(background, new Vector2(-viewport.Width, -viewport.Height - 120)); //Layering some backgrounds
             spriteBatch.Draw(background2, position2);
 
             spriteBatch.Draw(texture, destinationRectangle: new Rectangle(0, 0, 60, 60));
-            spriteBatch.Draw(play_button, destinationRectangle: new Rectangle(300, 200, 150, 150));
+            spriteBatch.Draw(play_button, destinationRectangle: new Rectangle(325, 175, 150, 150));
             spriteBatch.DrawString(font, "FPS:" + (1000 / gameTime.ElapsedGameTime.Milliseconds), new Vector2(725.0f, 20.0f), Color.White);
-            spriteBatch.DrawString(font, "Play Aufice!", new Vector2(350.0f, 150.0f), Color.Green);
-            spriteBatch.DrawString(fontBig, "Aufice", new Vector2(350.0f, 50.0f), Color.Green);
+            spriteBatch.DrawString(font, "Play Aufice!", new Vector2(360.0f, 185.0f), Color.LightCyan);
+            spriteBatch.DrawString(fontBig, "Aufice", new Vector2(350.0f, 50.0f), Color.LightCyan);
 
             spriteBatch.End();
 
