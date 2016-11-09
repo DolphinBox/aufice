@@ -225,6 +225,11 @@ namespace Aufice
             player.Position.X = MathHelper.Clamp(player.Position.X, 0, GraphicsDevice.Viewport.Width - player.Width);
 
             player.Position.Y = MathHelper.Clamp(player.Position.Y, 0, GraphicsDevice.Viewport.Height - player.Height);
+
+            if(texture.)
+            {
+
+            }
         }
 
     }
