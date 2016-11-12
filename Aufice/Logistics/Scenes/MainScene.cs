@@ -104,9 +104,10 @@ namespace Aufice.Logistics.Scenes
             var mouseState = Mouse.GetState();
             var mousePosition = new Point(mouseState.X, mouseState.Y);
             Console.WriteLine("Hai world.");
+            
             if (mouseState.LeftButton == ButtonState.Pressed && oldMouseState.LeftButton == ButtonState.Released){
                 Console.WriteLine("Hai worlds.");
-                Aufice.changeScene(new LevelSelect("hey"));
+                Aufice.changeScene(new GameScene("hey"));
             }
             oldMouseState = mouseState;
 

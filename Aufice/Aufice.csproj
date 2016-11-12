@@ -61,6 +61,7 @@
     <Compile Include="Aufice.cs" />
     <Compile Include="init.cs" />
     <Compile Include="Logistics\Scenes\DrawLoop.cs" />
+    <Compile Include="Logistics\Scenes\GameScene.cs" />
     <Compile Include="Logistics\Scenes\LevelSelect.cs" />
     <Compile Include="Logistics\Scenes\MainScene.cs" />
     <Compile Include="Logistics\Scenes\Scene.cs" />

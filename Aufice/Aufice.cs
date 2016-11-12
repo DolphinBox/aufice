@@ -44,7 +44,9 @@ namespace Aufice
 
         public static void changeScene(Scene scene) {
             content.Unload();
+            //graphics.GraphicsDevice.SetRenderTarget(null);
             graphics.GraphicsDevice.Clear(Color.Aquamarine);
+            
             currentScene = scene;
             scene.LoadContent();
         }
