@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>C:/aufice/aufice/Aufice/Content/Seshpenguin.png</SourceFile>
-  <SourceTime>2016-11-11T20:41:15.2632965-05:00</SourceTime>
-  <DestFile>C:/aufice/aufice/Aufice/Content/bin/DesktopGL/Seshpenguin.xnb</DestFile>
-  <DestTime>2016-11-11T21:22:00.7632365-05:00</DestTime>
+  <SourceFile>C:/Aufice/aufice/Aufice/Content/Seshpenguin.png</SourceFile>
+  <SourceTime>2016-11-11T16:39:49.6915558-05:00</SourceTime>
+  <DestFile>C:/Aufice/aufice/Aufice/Content/bin/DesktopGL/Seshpenguin.xnb</DestFile>
+  <DestTime>2016-11-11T22:06:05.1168269-05:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2016-03-30T02:36:08-04:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

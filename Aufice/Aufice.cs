@@ -43,12 +43,14 @@ namespace Aufice
         }
 
         public static void changeScene(Scene scene) {
-            scene.LoadContent();
+            content.Unload();
+            graphics.GraphicsDevice.Clear(Color.Aquamarine);
             currentScene = scene;
+            scene.LoadContent();
         }
 
         protected override void Initialize(){
-            changeScene(new MainScene("I <3 Devin"));
+            changeScene(new MainScene("I <3n"));
             playerMoveSpeed = 8.0f;
 
             TouchPanel.EnabledGestures = GestureType.FreeDrag;
@@ -71,7 +73,6 @@ namespace Aufice
         }
 
         protected override void UnloadContent(){
-            // TODO: Unload any non ContentManager content here
             Content.Unload();
         }
 

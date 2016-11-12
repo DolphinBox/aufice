@@ -25,6 +25,8 @@ namespace Aufice.Logistics.Scenes
         MouseState currentMouseState;
         MouseState previousMouseState;
 
+        MouseState oldMouseState;
+
         // Audio objects
         SoundEffect soundEffect;
         SoundEffectInstance soundInstance;
@@ -101,22 +103,14 @@ namespace Aufice.Logistics.Scenes
             //Mouse Position
             var mouseState = Mouse.GetState();
             var mousePosition = new Point(mouseState.X, mouseState.Y);
-
-            // The active state from the last frame is now old
-            var lastMouseState = currentMouseState;
-
-            // Get the mouse state relevant for this frame
-            currentMouseState = Mouse.GetState();
-
-            if (play_button.Bounds.Contains(mousePosition))
-            {
-                // Recognize a single click of the left mouse button
-                if (lastMouseState.LeftButton == ButtonState.Released && currentMouseState.LeftButton == ButtonState.Pressed)
-                {
-                    Console.Write("IT WORKED YESSS SCREW YOUUU.");
-                }
+            Console.WriteLine("Hai world.");
+            if (mouseState.LeftButton == ButtonState.Pressed && oldMouseState.LeftButton == ButtonState.Released){
+                Console.WriteLine("Hai worlds.");
+                Aufice.changeScene(new LevelSelect("hey"));
             }
-             position.X += 1;
+            oldMouseState = mouseState;
+
+            position.X += 1;
              if (position.X > Aufice.graphics.GraphicsDevice.Viewport.Width)
                  position.X = 0;
 
