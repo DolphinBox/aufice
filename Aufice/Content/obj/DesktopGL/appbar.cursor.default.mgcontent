@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>C:/Aufice/aufice/Aufice/Content/appbar.cursor.default.png</SourceFile>
-  <SourceTime>2016-11-11T16:39:49.6970448-05:00</SourceTime>
-  <DestFile>C:/Aufice/aufice/Aufice/Content/bin/DesktopGL/appbar.cursor.default.xnb</DestFile>
-  <DestTime>2016-11-11T16:46:20.6572882-05:00</DestTime>
+  <SourceFile>C:/aufice/aufice/Aufice/Content/appbar.cursor.default.png</SourceFile>
+  <SourceTime>2016-11-11T20:41:15.3313034-05:00</SourceTime>
+  <DestFile>C:/aufice/aufice/Aufice/Content/bin/DesktopGL/appbar.cursor.default.xnb</DestFile>
+  <DestTime>2016-11-11T21:22:10.2779405-05:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2016-03-30T02:36:08-04:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

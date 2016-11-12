@@ -48,7 +48,7 @@ namespace Aufice
         }
 
         protected override void Initialize(){
-            changeScene(new MainScene("die"));
+            changeScene(new MainScene("I <3 Devin"));
             playerMoveSpeed = 8.0f;
 
             TouchPanel.EnabledGestures = GestureType.FreeDrag;
