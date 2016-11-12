@@ -34,7 +34,7 @@ namespace Aufice
 
         public static float playerMoveSpeed;
 
-        public static Player player;
+        public static Player player = new Player();
 
         public Aufice() {
             graphics = new GraphicsDeviceManager(this);
@@ -49,7 +49,6 @@ namespace Aufice
 
         protected override void Initialize(){
             changeScene(new MainScene("die"));
-            player = new Player();
             playerMoveSpeed = 8.0f;
 
             TouchPanel.EnabledGestures = GestureType.FreeDrag;

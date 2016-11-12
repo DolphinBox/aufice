@@ -53,11 +53,9 @@ namespace Aufice.Logistics.Scenes
             spriteBatch.DrawString(font, "FPS:" + (1000 / gameTime.ElapsedGameTime.Milliseconds), new Vector2(725.0f, 20.0f), Color.White);
             spriteBatch.DrawString(font, "Play Aufice!", new Vector2(360.0f, 185.0f), Color.LightCyan);
             spriteBatch.DrawString(fontBig, "Aufice", new Vector2(350.0f, 50.0f), Color.LightCyan);
-            //Aufice.player.Draw(spriteBatch);
+            Aufice.player.Draw(spriteBatch);
         }
         public override void LoadContent() {
-
-            // TODO: use this.Content to load your game content here
             texture = Aufice.content.Load<Texture2D>("logo");
 
             play_button = Aufice.content.Load<Texture2D>("appbar.control.play");
@@ -65,11 +63,12 @@ namespace Aufice.Logistics.Scenes
             background2 = Aufice.content.Load<Texture2D>("appbar.cloud");
 
             Vector2 playerPosition = new Vector2(Aufice.graphics.GraphicsDevice.Viewport.TitleSafeArea.X, Aufice.graphics.GraphicsDevice.Viewport.TitleSafeArea.Y + Aufice.graphics.GraphicsDevice.Viewport.TitleSafeArea.Height / 2);
+            
+            Texture2D d = Aufice.content.Load<Texture2D>("appbar.cursor.default");
 
-            //Aufice.player.Initialize(Aufice.content.Load<Texture2D>("appbar.cursor.default"), playerPosition);
+            Aufice.player.Initialize(d, playerPosition);
 
             //Initalize Sounds
-            //soundfile = TitleContainer.OpenStream(@"Content\tx0_fire1.wav");
             soundEffect = Aufice.content.Load<SoundEffect>("intro");
             soundInstance = soundEffect.CreateInstance();
 
@@ -90,20 +89,20 @@ namespace Aufice.Logistics.Scenes
             currentKeyboardState = Keyboard.GetState();
             currentGamePadState = GamePad.GetState(PlayerIndex.One);
 
-            //UpdatePlayer(gameTime);
+            UpdatePlayer(gameTime);
 
             //Update rectangle position
             //if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
            
                //Exit();
 
-            /* position.X += 1;
-             if (position.X > this.GraphicsDevice.Viewport.Width)
+             position.X += 1;
+             if (position.X > Aufice.graphics.GraphicsDevice.Viewport.Width)
                  position.X = 0;
 
              position2.X += 1f;
-             if (position2.X > this.GraphicsDevice.Viewport.Width)
-                 position2.X = 0;*/
+             if (position2.X > Aufice.graphics.GraphicsDevice.Viewport.Width)
+                 position2.X = 0;
 
         }
         //Updates the player constantly
