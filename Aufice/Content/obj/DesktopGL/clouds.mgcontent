@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>C:/Aufice/aufice/Aufice/Content/clouds.jpg</SourceFile>
-  <SourceTime>2016-11-11T16:39:50.1143399-05:00</SourceTime>
-  <DestFile>C:/Aufice/aufice/Aufice/Content/bin/DesktopGL/clouds.xnb</DestFile>
-  <DestTime>2016-11-11T16:46:20.5957433-05:00</DestTime>
+  <SourceFile>C:/aufice/aufice/Aufice/Content/clouds.jpg</SourceFile>
+  <SourceTime>2016-11-11T20:41:17.2760518-05:00</SourceTime>
+  <DestFile>C:/aufice/aufice/Aufice/Content/bin/DesktopGL/clouds.xnb</DestFile>
+  <DestTime>2016-11-11T21:22:09.9338961-05:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2016-03-30T02:36:08-04:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

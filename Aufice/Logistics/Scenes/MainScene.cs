@@ -33,6 +33,7 @@ namespace Aufice.Logistics.Scenes
         SpriteFont font;
         SpriteFont fontBig;
 
+
         public MainScene(String Name) {
             this.name = Name;
         }
@@ -93,9 +94,28 @@ namespace Aufice.Logistics.Scenes
 
             //Update rectangle position
             //if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
-           
-               //Exit();
 
+            //Exit();
+            //Console.Write("Hai world.");
+
+            //Mouse Position
+            var mouseState = Mouse.GetState();
+            var mousePosition = new Point(mouseState.X, mouseState.Y);
+
+            // The active state from the last frame is now old
+            var lastMouseState = currentMouseState;
+
+            // Get the mouse state relevant for this frame
+            currentMouseState = Mouse.GetState();
+
+            if (play_button.Bounds.Contains(mousePosition))
+            {
+                // Recognize a single click of the left mouse button
+                if (lastMouseState.LeftButton == ButtonState.Released && currentMouseState.LeftButton == ButtonState.Pressed)
+                {
+                    Console.Write("IT WORKED YESSS SCREW YOUUU.");
+                }
+            }
              position.X += 1;
              if (position.X > Aufice.graphics.GraphicsDevice.Viewport.Width)
                  position.X = 0;
