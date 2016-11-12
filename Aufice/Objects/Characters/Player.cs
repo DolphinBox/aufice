@@ -8,8 +8,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Aufice.Objects.Characters
 {
-    class Player
-    {
+    public class Player{
         public void Initialize(Texture2D texture, Vector2 position){
             PlayerTexture = texture;
             // Set the starting position of the player around the middle of the screen and to the back
@@ -29,8 +28,8 @@ namespace Aufice.Objects.Characters
 
 
         public void Draw(SpriteBatch spriteBatch){
-            spriteBatch.Draw(PlayerTexture, Position, null, Color.White, 0f, Vector2.Zero, 1f,
-               SpriteEffects.None, 0f);
+
+            spriteBatch.Draw(PlayerTexture, Position, null, Color.White, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
         }
 
         // Animation representing the player

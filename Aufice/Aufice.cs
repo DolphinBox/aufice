@@ -1,6 +1,8 @@
-﻿using Aufice.Objects.Characters;
+﻿using Aufice.Logistics.Scenes;
+using Aufice.Objects.Characters;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
+using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Input;
@@ -20,57 +22,33 @@ namespace Aufice
     /// <summary>
     /// Aufice. An experimental game.
     /// </summary>
-    public class Aufice : Game
-    {
-        GraphicsDeviceManager graphics;
-        SpriteBatch spriteBatch;
-        Texture2D texture;
-        Vector2 position;
-        Vector2 position2;
-        Texture2D play_button;
-        Texture2D background;
-        Texture2D background2;
+    public class Aufice : Game{
 
-        // Audio objects
-        SoundEffect soundEffect;
+        public static Scene currentScene = null;
 
-        /* 
-        Input Processes
-        */
+        public static ContentManager content = null;
 
-        KeyboardState currentKeyboardState;
-        KeyboardState previousKeyboardState;
-        GamePadState currentGamePadState;
-        GamePadState previousGamePadState;
-        MouseState currentMouseState;
-        MouseState previousMouseState;
+        public static GraphicsDeviceManager graphics;
 
-        SoundEffectInstance soundInstance;
+        public static Viewport viewport;
 
-        Viewport viewport;
+        public static float playerMoveSpeed;
 
-
-        float playerMoveSpeed;
-
-        Player player;
-
-        //Font Stuff
-        SpriteFont font;
-        SpriteFont fontBig;
-
+        public static Player player;
 
         public Aufice() {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
+            Aufice.content = Content;
         }
 
-        /// <summary>
-        /// Allows the game to perform any initialization it needs to before starting to run.
-        /// This is where it can query for any required services and load any non-graphic
-        /// related content.  Calling base.Initialize will enumerate through any components
-        /// and initialize them as well.
-        /// </summary>
+        public static void changeScene(Scene scene) {
+            scene.LoadContent();
+            currentScene = scene;
+        }
+
         protected override void Initialize(){
+            changeScene(new MainScene("die"));
             player = new Player();
             playerMoveSpeed = 8.0f;
 
@@ -88,51 +66,11 @@ namespace Aufice
 
             base.Initialize();
         }
-        //private ScrollingBackground myBackground;
-        /// <summary>
-        /// LoadContent will be called once per game and is the place to load
-        /// all of your content.
-        /// </summary>
+
         protected override void LoadContent(){
-            // Create a new SpriteBatch, which can be used to draw textures.
-            spriteBatch = new SpriteBatch(GraphicsDevice);
-
-            // TODO: use this.Content to load your game content here
-            texture = this.Content.Load<Texture2D>("logo");
-
-            play_button = this.Content.Load<Texture2D>("appbar.control.play");
-            background = this.Content.Load<Texture2D>("pixel_background");
-            background2 = this.Content.Load<Texture2D>("appbar.cloud");
-
-            Vector2 playerPosition = new Vector2(GraphicsDevice.Viewport.TitleSafeArea.X, GraphicsDevice.Viewport.TitleSafeArea.Y + GraphicsDevice.Viewport.TitleSafeArea.Height / 2);
-
-            player.Initialize(Content.Load<Texture2D>("appbar.cursor.default"), playerPosition);
-
-
-            //if(texture.)
-
-            //myBackground = new ScrollingBackground();
-
-            //Initalize Sounds
-            //soundfile = TitleContainer.OpenStream(@"Content\tx0_fire1.wav");
-            soundEffect = Content.Load<SoundEffect>("intro");
-            soundInstance = soundEffect.CreateInstance();
-
-            //Set Volume
-            soundInstance.Volume = 0.5F;
-
-            //Play sounds
-            soundInstance.Play();
-
-            // Put the name of the font
-            font = this. Content.Load<SpriteFont>("Font1");
-            fontBig = this.Content.Load<SpriteFont>("FontBig");
+            // maybe later .-.
         }
 
-        /// <summary>
-        /// UnloadContent will be called once per game and is the place to unload
-        /// game-specific content.
-        /// </summary>
         protected override void UnloadContent(){
             // TODO: Unload any non ContentManager content here
             Content.Unload();
@@ -144,30 +82,8 @@ namespace Aufice
         /// </summary>
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime){
-            previousGamePadState = currentGamePadState;
-            previousKeyboardState = currentKeyboardState;
-
-            currentKeyboardState = Keyboard.GetState();
-            currentGamePadState = GamePad.GetState(PlayerIndex.One);
-
-            UpdatePlayer(gameTime);
-
-            //Update rectangle position
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
-                Exit();
-
-            position.X += 1;
-            if (position.X > this.GraphicsDevice.Viewport.Width)
-                position.X = 0;
-
-            position2.X += 1f;
-            if (position2.X > this.GraphicsDevice.Viewport.Width)
-                position2.X = 0;
-
+            currentScene.Update(gameTime);
             base.Update(gameTime);
-
-
-
         }
 
         /// <summary>
@@ -175,62 +91,9 @@ namespace Aufice
         /// </summary>
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime){
-            Color bgcolor = new Color(173, 230, 255);
-            GraphicsDevice.Clear(bgcolor);
-
-            // TODO: Add your drawing code here
-
-            //Things drawn on screen are layered from top to bottom from where they are drawn here.
-            spriteBatch.Begin();
-
-            spriteBatch.Draw(background, new Vector2(-viewport.Width, -viewport.Height - 120)); //Layering some backgrounds
-            spriteBatch.Draw(background2, position2);
-
-            spriteBatch.Draw(texture, destinationRectangle: new Rectangle(0, 0, 60, 60));
-            spriteBatch.Draw(play_button, destinationRectangle: new Rectangle(325, 175, 150, 150));
-            spriteBatch.DrawString(font, "FPS:" + (1000 / gameTime.ElapsedGameTime.Milliseconds), new Vector2(725.0f, 20.0f), Color.White);
-            spriteBatch.DrawString(font, "Play Aufice!", new Vector2(360.0f, 185.0f), Color.LightCyan);
-            spriteBatch.DrawString(fontBig, "Aufice", new Vector2(350.0f, 50.0f), Color.LightCyan);
-
-            spriteBatch.End();
-
-            spriteBatch.Begin();
-            player.Draw(spriteBatch);
-            spriteBatch.End();
+            DrawLoop.Initialize(gameTime, this.GraphicsDevice);
 
             base.Draw(gameTime);
         }
-
-        
-        //Updates the player constantly
-        private void UpdatePlayer(GameTime gameTime){
-            // Get Thumbstick Controls
-            player.Position.X += currentGamePadState.ThumbSticks.Left.X * playerMoveSpeed;
-            player.Position.Y -= currentGamePadState.ThumbSticks.Left.Y * playerMoveSpeed;
-
-            // Use the Keyboard / Dpad
-            if (currentKeyboardState.IsKeyDown(Keys.A) || currentGamePadState.DPad.Left == ButtonState.Pressed){
-                player.Position.X -= playerMoveSpeed;
-            }
-            if (currentKeyboardState.IsKeyDown(Keys.D) || currentGamePadState.DPad.Right == ButtonState.Pressed){
-                player.Position.X += playerMoveSpeed;
-            }
-            if (currentKeyboardState.IsKeyDown(Keys.W) || currentGamePadState.DPad.Up == ButtonState.Pressed){
-                player.Position.Y -= playerMoveSpeed;
-            }
-            if (currentKeyboardState.IsKeyDown(Keys.S) || currentGamePadState.DPad.Down == ButtonState.Pressed){
-                player.Position.Y += playerMoveSpeed;
-            }
-
-            player.Position.X = MathHelper.Clamp(player.Position.X, 0, GraphicsDevice.Viewport.Width - player.Width);
-
-            player.Position.Y = MathHelper.Clamp(player.Position.Y, 0, GraphicsDevice.Viewport.Height - player.Height);
-
-            if(texture.)
-            {
-
-            }
-        }
-
     }
 }
