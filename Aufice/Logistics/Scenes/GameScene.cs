@@ -17,13 +17,8 @@ namespace Aufice.Logistics.Scenes
         Matrix viewMatrix;
         Matrix worldMatrix;
 
-        //BasicEffect for rendering
-        BasicEffect basicEffect;
-
-        //Geometric info
-        VertexPositionColor[] triangleVertices;
-        VertexBuffer vertexBuffer;
-
+        Model model;
+        
         //Orbit
         bool orbit = false;
 
@@ -33,7 +28,7 @@ namespace Aufice.Logistics.Scenes
         public override void LoadContent() {
             //Setup Camera
             camTarget = new Vector3(0f, 0f, 0f);
-            camPosition = new Vector3(0f, 0f, -100f);
+            camPosition = new Vector3(0f, 0f, -10f);
             projectionMatrix = Matrix.CreatePerspectiveFieldOfView(
                                MathHelper.ToRadians(45f),
                                Aufice.graphics.GraphicsDevice.DisplayMode.AspectRatio,
@@ -43,51 +38,26 @@ namespace Aufice.Logistics.Scenes
             worldMatrix = Matrix.CreateWorld(camTarget, Vector3.
                           Forward, Vector3.Up);
 
-            //BasicEffect
-            basicEffect = new BasicEffect(Aufice.graphics.GraphicsDevice);
-            basicEffect.Alpha = 1f;
+            model = Aufice.content.Load<Model>("testModel");
 
 
-            basicEffect.VertexColorEnabled = true;
-
-
-            basicEffect.LightingEnabled = false;
-
-            //Geometry  - a simple triangle about the origin
-            triangleVertices = new VertexPositionColor[3];
-            triangleVertices[0] = new VertexPositionColor(new Vector3(
-                                  0, 20, 0), Color.Red);
-            triangleVertices[1] = new VertexPositionColor(new Vector3(-
-                                  20, -20, 0), Color.Green);
-            triangleVertices[2] = new VertexPositionColor(new Vector3(
-                                  20, -20, 0), Color.Blue);
-
-            //Vert buffer
-            vertexBuffer = new VertexBuffer(Aufice.graphics.GraphicsDevice, typeof(
-                           VertexPositionColor), 3, BufferUsage.
-                           WriteOnly);
-            vertexBuffer.SetData<VertexPositionColor>(triangleVertices);
         }
         public override void Enable(GameTime gameTime, GraphicsDevice graphicsDevice, SpriteBatch spriteBatch) {
-            basicEffect.Projection = projectionMatrix;
-            basicEffect.View = viewMatrix;
-            basicEffect.World = worldMatrix;
 
             Aufice.graphics.GraphicsDevice.Clear(Color.CornflowerBlue);
-            Aufice.graphics.GraphicsDevice.SetVertexBuffer(vertexBuffer);
 
-            //Turn off culling so we see both sides of our rendered triangle
-            RasterizerState rasterizerState = new RasterizerState();
-            rasterizerState.CullMode = CullMode.None;
-            Aufice.graphics.GraphicsDevice.RasterizerState = rasterizerState;
-
-            foreach (EffectPass pass in basicEffect.CurrentTechnique.
-                    Passes)
-            {
-                pass.Apply();
-                Aufice.graphics.GraphicsDevice.DrawPrimitives(PrimitiveType.
-                                              TriangleList, 0, 3);
+            //Draw all the meshes in the model.
+            foreach(ModelMesh mesh in model.Meshes) {
+                foreach(BasicEffect effect in mesh.Effects){
+                    effect.View = viewMatrix;
+                    effect.World = worldMatrix;
+                    effect.Projection = projectionMatrix;
+                    mesh.Draw();
+                }
+                
             }
+            
+
         }
         
         public override void Update(GameTime gameTime) {
