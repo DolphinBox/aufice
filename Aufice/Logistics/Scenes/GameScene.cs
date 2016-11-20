@@ -38,7 +38,7 @@ namespace Aufice.Logistics.Scenes
             worldMatrix = Matrix.CreateWorld(camTarget, Vector3.
                           Forward, Vector3.Up);
 
-            model = Aufice.content.Load<Model>("testModel");
+            model = Aufice.content.Load<Model>("MonoCube");
 
 
         }

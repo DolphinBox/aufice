@@ -16,5 +16,7 @@
     <File>C:/aufice/aufice/Aufice/Content/pixel_background.png</File>
     <File>C:/aufice/aufice/Aufice/Content/testModel.dae</File>
     <File>C:/aufice/aufice/Aufice/Content/testModelTexture.png</File>
+    <File>C:/aufice/aufice/Aufice/Content/MonoCube.dae</File>
+    <File>C:/aufice/aufice/Aufice/Content/MonoCubeTexture.png</File>
   </SourceFiles>
 </SourceFileCollection>
